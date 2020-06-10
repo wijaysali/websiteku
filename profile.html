@@ -8,9 +8,9 @@
     <body>
         <nav>
             <div class="menu-mobile">
-                <a href="#">Menu</a>
+                <a href="#" onclick="showMenu()">Menu</a>
             </div>
-            <ul>
+            <ul id="menu">
                 <li><a href="/Projects/home.html"> HOME </a></li>
                 <li><a href="#"> PRODUCTS </a></li>
                 <li><a href="#"> GALLERY </a></li>
@@ -26,71 +26,139 @@
             </div>
 
             <div class="description">
-                <h1>Nama Anda</h1>
-                <p>Front End Designer</p>
-                <a href="#" class="button bg-blue" >Kontak</a>
+                <h1 id="pName">Nama Anda</h1>
+                <p id="pRole">Front End Designer</p>
+                <a href="#" class="button bg-blue" onclick="editForm()" >Edit</a>
                 <a href="#" class="button border-green" >Resume</a>
             </div>
 
             <div class="information">
                 <div class="data">
                     <p class="field">Availability</p>
-                    <p class="text-gray">Full Time</p>
+                    <p id="pAvailable" class="text-gray">Full Time</p>
                 </div>
                 <div class="data">
                     <p class="field">Usia</p>
-                    <p class="text-gray">17</p>
+                    <p id="pAge" class="text-gray">17</p>
                 </div>
                 <div class="data">
                     <p class="field">Lokasi</p>
-                    <p class="text-gray">Jakarta, Indonesia</p>
+                    <p id="pLocation" class="text-gray">Jakarta, Indonesia</p>
                 </div>
                 <div class="data">
                     <p class="field">Pengalaman</p>
-                    <p class="text-gray">2</p>
+                    <p id="pExperience" class="text-gray">2</p>
                 </div>
                 <div class="data">
                     <p class="field">Email</p>
-                    <p class="text-gray">developer@gmail.com</p>
+                    <p id="pEmail" class="text-gray">developer@gmail.com</p>
                 </div>
             </div>
         </section>
 
         <section id="input-form">
-            <form>
+            <!-- <form> -->
                 <div class="form">
                     <label> Name </label>
-                    <input type="text" name="nama">
+                    <input id="inpName" type="text" name="nama">
                 </div>
                 <div class="form">
                     <label> Role </label>
-                    <input type="text" name="role">
+                    <input id="inpRole" type="text" name="role">
                 </div>
                 <div class="form">
                     <label> Availability </label>
-                    <input type="text" name="availability">
+                    <input id="inpAvailability" type="text" name="availability">
                 </div>
                 <div class="form">
                     <label> Age </label>
-                    <input type="number" name="age">
+                    <input id="inpUsia" type="number" name="age">
                 </div>
                 <div class="form">
                     <label> Lokasi </label>
-                    <input type="text" name="lokasi">
+                    <input id="inpLokasi" type="text" name="lokasi">
                 </div>
                 <div class="form">
                     <label> Years Experience </label>
-                    <input type="number" name="years">
+                    <input id="inpYears" type="number" name="years">
                 </div>
                 <div class="form">
                     <label> Email </label>
-                    <input type="email" name="email">
+                    <input id="inpEmail" type="email" name="email">
                 </div>
                 <div class="form">
-                    <input type="submit" name="submit" value="SUBMIT" class="bg-green">
+                    <input onclick="simpanForm()" type="submit" name="submit" value="SUBMIT" class="bg-green">
                 </div>
-            </form>
+            <!-- </form> -->
         </section>
+
+        <script>
+            let formMenu = document.getElementById("input-form");
+            formMenu.style.display="none";
+
+            function editForm(){
+                if(formMenu.style.display === "none"){
+                    formMenu.style.display = "block";
+                }else{
+                    formMenu.style.display = "none";
+                }
+            }
+
+            let name = document.getElementById("pName").innerHTML;
+            let role = document.getElementById("pRole").innerHTML;
+            let available = document.getElementById("pAvailable").innerHTML;
+            let usia = document.getElementById("pAge").innerHTML;
+            let lokasi = document.getElementById("pLocation").innerHTML;
+            let experience = document.getElementById("pExperience").innerHTML;
+            let email = document.getElementById("pEmail").innerHTML;
+
+
+            document.getElementById("inpName").value=name;
+            document.getElementById("inpRole").value=role;
+            document.getElementById("inpAvailability").value=available;
+            document.getElementById("inpUsia").value=usia;
+            document.getElementById("inpLokasi").value=lokasi;
+            document.getElementById("inpYears").value=experience;
+            document.getElementById("inpEmail").value=email;
+
+            function simpanForm(){
+                formMenu.style.display="none";
+
+                formMenu.style.display = "none";
+                var name = document.getElementById('inpName').value;
+                var role = document.getElementById("inpRole").value;
+                var available = document.getElementById("inpAvailability").value;
+                var usia = document.getElementById("inpUsia").value;
+                var lokasi = document.getElementById("inpLokasi").value;
+                var experience= document.getElementById("inpYears").value;
+                var email = document.getElementById("inpEmail").value;
+
+                document.getElementById("pName").innerHTML=name;
+                document.getElementById("pRole").innerHTML=role;
+                document.getElementById("pAvailable").innerHTML=available;
+                document.getElementById("pAge").innerHTML=usia;
+                document.getElementById("pLocation").innerHTML=lokasi;
+                document.getElementById("pExperience").innerHTML=experience;
+                document.getElementById("pEmail").innerHTML=email;
+            }
+
+
+
+
+            function showMenu()
+            {
+                let menu = document.getElementById("menu");
+                let box = document.getElementById("box-profile");
+
+                if(menu.style.display === "block"){
+                    menu.style.display = "none";
+                    box.style.paddingTop = "0px";
+                }else{
+                    menu.style.display = "block";
+                    box.style.paddingTop = "125px";
+                }
+            }
+        </script>
 
     </body>
 </html>
